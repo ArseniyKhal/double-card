@@ -1,0 +1,116 @@
+@import "null";
+
+@font-face {
+	font-family: "StratosSkyeng";
+	src: url("../fonts/stratosskyengweb-regular.woff2") format("woff2"),
+		url("../fonts/stratosskyengweb-regular.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+$BTNColor: #7ac100;
+$BG1Color: #004980;
+$TextColor1: #fff;
+$BG2Color: #c2f5ff;
+$TextColor2: #004980;
+$TextColor3: #0080c1;
+
+html {
+	font-family: "StratosSkyeng", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	color: $TextColor1;
+	background-color: $BG1Color;
+}
+
+.container {
+	max-width: 1054px;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+
+.button {
+	background-color: $BTNColor;
+	color: $TextColor1;
+	width: 246px;
+	height: 50px;
+	border-radius: 12px;
+	font-size: 24px;
+	line-height: 32px;
+}
+
+.header {
+	&__body {
+		min-height: 155px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 35px;
+	}
+}
+
+.timer {
+	height: 91px;
+	min-width: 155px;
+	&__text {
+		display: flex;
+		justify-content: end;
+		font-size: 16px;
+		gap: 57px;
+		padding-right: 5px;
+		& > * {
+			text-align: right;
+		}
+	}
+	&__volume {
+		font-size: 64px;
+	}
+}
+
+.difficulty-level {
+	&__body {
+		background-color: $BG2Color;
+		text-align: center;
+		border-radius: 12px;
+		max-width: 480px;
+		height: 459px;
+		padding: 50px 20px;
+	}
+	&__container {
+		max-width: 500px;
+		padding: 0 10px;
+		margin: 158px auto;
+	}
+	&__title {
+		font-size: 40px;
+		color: $TextColor2;
+		line-height: 1.2;
+		margin-bottom: 48px;
+	}
+	&__row {
+		display: flex;
+		font-size: 64px;
+		gap: 24px;
+		justify-content: center;
+		margin-bottom: 67px;
+	}
+	&__element {
+		background-color: #fff;
+		color: $TextColor3;
+		border-radius: 12px;
+		width: 98px;
+		height: 98px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+	}
+}
+
+.card-field {
+	&__body {
+		background-color: #a89214;
+	}
+}

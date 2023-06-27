@@ -1,0 +1,206 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "StratosSkyeng";
+  src: url("../fonts/stratosskyengweb-regular.woff2") format("woff2"), url("../fonts/stratosskyengweb-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+html {
+  font-family: "StratosSkyeng", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #fff;
+  background-color: #004980;
+}
+
+.container {
+  max-width: 1054px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.button {
+  background-color: #7ac100;
+  color: #fff;
+  width: 246px;
+  height: 50px;
+  border-radius: 12px;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.header__body {
+  min-height: 155px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 35px;
+}
+
+.timer {
+  height: 91px;
+  min-width: 155px;
+}
+.timer__text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  font-size: 16px;
+  gap: 57px;
+  padding-right: 5px;
+}
+.timer__text > * {
+  text-align: right;
+}
+.timer__volume {
+  font-size: 64px;
+}
+
+.difficulty-level__body {
+  background-color: #c2f5ff;
+  text-align: center;
+  border-radius: 12px;
+  max-width: 480px;
+  height: 459px;
+  padding: 50px 20px;
+}
+.difficulty-level__container {
+  max-width: 500px;
+  padding: 0 10px;
+  margin: 158px auto;
+}
+.difficulty-level__title {
+  font-size: 40px;
+  color: #004980;
+  line-height: 1.2;
+  margin-bottom: 48px;
+}
+.difficulty-level__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 64px;
+  gap: 24px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 67px;
+}
+.difficulty-level__element {
+  background-color: #fff;
+  color: #0080c1;
+  border-radius: 12px;
+  width: 98px;
+  height: 98px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.card-field__body {
+  background-color: #a89214;
+}
