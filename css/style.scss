@@ -39,33 +39,13 @@ html {
 	border-radius: 12px;
 	font-size: 24px;
 	line-height: 32px;
-}
-
-.header {
-	&__body {
-		min-height: 155px;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 35px;
+	position: relative;
+	transition: transform 0.2s ease;
+	&:hover {
+		transform: scale(1.05);
 	}
-}
-
-.timer {
-	height: 91px;
-	min-width: 155px;
-	&__text {
-		display: flex;
-		justify-content: end;
-		font-size: 16px;
-		gap: 57px;
-		padding-right: 5px;
-		& > * {
-			text-align: right;
-		}
-	}
-	&__volume {
-		font-size: 64px;
+	&:active {
+		transform: translateY(1px);
 	}
 }
 
@@ -106,11 +86,12 @@ html {
 		justify-content: center;
 		align-items: center;
 		cursor: pointer;
-	}
-}
-
-.card-field {
-	&__body {
-		background-color: #a89214;
+		transition: transform 0.2s ease;
+		&:hover {
+			transform: scale(1.05);
+		}
+		&:active {
+			transform: translateY(1px);
+		}
 	}
 }
