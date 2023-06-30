@@ -101,6 +101,10 @@ html {
   background-color: #004980;
 }
 
+.app {
+  position: relative;
+}
+
 .container {
   max-width: 1054px;
   padding: 0 15px;
@@ -169,6 +173,19 @@ html {
   font-size: 64px;
 }
 
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 73, 128, 0.8999999762);
+}
+.modal__container {
+  margin: 158px auto;
+  max-width: 500px;
+  padding: 0 10px;
+}
 .modal__body {
   background-color: #c2f5ff;
   text-align: center;
@@ -186,11 +203,6 @@ html {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-.modal__container {
-  max-width: 500px;
-  padding: 0 10px;
-  margin: 158px auto;
 }
 
 .difficulty-level__title {
