@@ -1,27 +1,28 @@
 import { renderApp } from "./renderApp.js";
+import { renderModules, modulesEl } from "./components/module-component.js"
 
 export let gameState = {
 	difficultyLevel: 0,
 	timeGame: 0,
 };
 
-renderApp();
+if (gameState.difficultyLevel === 0) {
+	renderModules();
+} else {
+	renderApp()
+}
 
-// выбор сложности игры
-const buttonsDifficultyLevel = document.querySelectorAll(".difficulty-level__element");
-for (const buttonDifLevel of buttonsDifficultyLevel) {
-	buttonDifLevel.addEventListener('click', () => {
-		gameState.difficultyLevel = buttonDifLevel.dataset.level;
-		renderApp();
-	});
+// установка сложности игры
+export const setDifficultyLevel = (difLv) => {
+	gameState.difficultyLevel = difLv;
 }
 
 // начало новой игры
-// const buttonNewGame = document.getElementById("newGame");
-// console.log(buttonNewGame);
-// buttonNewGame.addEventListener('click', () => {
-// 	console.log("2");
-	// gameState.difficultyLevel = 0;
-	// renderApp();
-// })
+export const initNewGame = () => {
+	const buttonNewGame = document.getElementById("newGame");
+	buttonNewGame.addEventListener('click', () => {
+		modulesEl.classList.remove("display-none");
+		console.log("новая игра!");
+	})
+}
 

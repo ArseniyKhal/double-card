@@ -137,6 +137,14 @@ html {
           transform: translateY(1px);
 }
 
+.display-none {
+  display: none;
+}
+
+.select-border {
+  border: 4px solid #0080c1;
+}
+
 .header__body {
   min-height: 155px;
   display: -webkit-box;
@@ -173,7 +181,7 @@ html {
   font-size: 64px;
 }
 
-.modal {
+.modul {
   position: absolute;
   top: 0;
   left: 0;
@@ -181,12 +189,12 @@ html {
   width: 100%;
   background-color: rgba(0, 73, 128, 0.8999999762);
 }
-.modal__container {
+.modul__container {
   margin: 158px auto;
   max-width: 500px;
   padding: 0 10px;
 }
-.modal__body {
+.modul__body {
   background-color: #c2f5ff;
   text-align: center;
   border-radius: 12px;

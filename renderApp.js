@@ -1,7 +1,11 @@
-import { gameState } from "./index.js";
+import { initNewGame } from "./index.js";
 
-const headerHtml =
-	`<header class="header">
+// здесь рендер игрового поля
+const appEl = document.getElementById("app");
+
+export const renderApp = () => {
+	const appHtml =
+		`<header class="header">
 				<div class="container">
 					<div class="header__body">
 						<div class="header__timer timer">
@@ -15,63 +19,18 @@ const headerHtml =
 					</div>
 				</div>
 			</header>
-	`;
 
-const sectionModulHtml =
-	`<section class="modal">
-	<div class="modal__container">
-		<div class="modal__body difficulty-level">
-			<div class="modal__content">
-				<h2 class="difficulty-level__title">Выбери <br> сложность</h2>
-				<div class="difficulty-level__row">
-					<div class="difficulty-level__element" data-level="1">1</div>
-					<div class="difficulty-level__element" data-level="2">2</div>
-					<div class="difficulty-level__element" data-level="3">3</div>
+			<section class="card-field">
+				<div class="container">
+					<div class="card-field__body">
+						поле с картами
+					</div>
 				</div>
-			</div>
-			<div class="modal__button">
-				<button class="difficulty-level__button button">Старт</button>
-			</div>
-		</div>
-	</div>
-</section>
-	`;
-
-const sectionCardFieldHtml =
-	`<section class="card-field">
-	<div class="container">
-		<div class="card-field__body">
-			поле с картами
-		</div>
-	</div>
-</section>
-	`;
-
-
-
-
-
-export const renderApp = () => {
-	const appEl = document.getElementById("app");
-	if (gameState.difficultyLevel === 0) {
-		const appHtml =
-			`
-			${sectionModulHtml}
-			`
-		appEl.innerHTML = appHtml;
-
-	} else {
-
-		const appHtml =
-			`
-		${headerHtml}
-		${sectionModulHtml}
-		${sectionCardFieldHtml}
+			</section>
 		`
 
-		appEl.innerHTML = appHtml;
-	}
-
+	appEl.innerHTML = appHtml;
+	initNewGame();
 }
 
 
