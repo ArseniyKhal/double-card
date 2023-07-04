@@ -101,6 +101,10 @@ html {
   background-color: #004980;
 }
 
+.app {
+  position: relative;
+}
+
 .container {
   max-width: 1054px;
   padding: 0 15px;
@@ -133,7 +137,64 @@ html {
           transform: translateY(1px);
 }
 
-.modal__body {
+.display-none {
+  display: none;
+}
+
+.select-border {
+  border: 4px solid #0080c1;
+}
+
+.header__body {
+  min-height: 155px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 35px;
+}
+
+.timer {
+  height: 91px;
+  min-width: 155px;
+}
+.timer__text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  font-size: 16px;
+  gap: 57px;
+  padding-right: 5px;
+}
+.timer__text > * {
+  text-align: right;
+}
+.timer__volume {
+  font-size: 64px;
+}
+
+.modul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 73, 128, 0.8999999762);
+}
+.modul__container {
+  margin: 158px auto;
+  max-width: 500px;
+  padding: 0 10px;
+}
+.modul__body {
   background-color: #c2f5ff;
   text-align: center;
   border-radius: 12px;
@@ -150,11 +211,6 @@ html {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-.modal__container {
-  max-width: 500px;
-  padding: 0 10px;
-  margin: 158px auto;
 }
 
 .difficulty-level__title {
@@ -204,4 +260,19 @@ html {
   -webkit-transform: translateY(1px);
       -ms-transform: translateY(1px);
           transform: translateY(1px);
+}
+
+.card-field__body {
+  background-color: #254dbb;
+  height: 700px;
+  font-size: 86px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
