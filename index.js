@@ -1,5 +1,5 @@
-import { renderApp } from "./renderApp.js";
-import { renderModules, modulesEl } from "./components/module-component.js"
+import { renderApp } from './renderApp.js';
+import { renderModules, modulesEl } from './components/module-component.js';
 
 export let gameState = {
 	difficultyLevel: 0,
@@ -9,20 +9,19 @@ export let gameState = {
 if (gameState.difficultyLevel === 0) {
 	renderModules();
 } else {
-	renderApp()
+	renderApp();
 }
 
 // установка сложности игры
 export const setDifficultyLevel = (difLv) => {
 	gameState.difficultyLevel = difLv;
-}
+};
 
 // начало новой игры
 export const initNewGame = () => {
-	const buttonNewGame = document.getElementById("newGame");
+	const buttonNewGame = document.getElementById('newGame');
 	buttonNewGame.addEventListener('click', () => {
-		modulesEl.classList.remove("display-none");
-		console.log("новая игра!");
-	})
-}
-
+		modulesEl.classList.remove('display-none');
+		console.log('новая игра!');
+	});
+};
