@@ -32,10 +32,11 @@ export function renderModules() {
 	const buttonsDifficultyLevel = document.querySelectorAll(".difficulty-level__element");
 	for (const buttonDifLevel of buttonsDifficultyLevel) {
 
-		buttonDifLevel.classList.remove("select-border");
-
 		//кнопка выбора сложности игры
 		buttonDifLevel.addEventListener('click', () => {
+			for (const btnDifLv of buttonsDifficultyLevel) {
+				btnDifLv.classList.remove("select-border")
+			};
 			buttonDifLevel.classList.add("select-border");
 			setDifficultyLevel(buttonDifLevel.dataset.level);
 
