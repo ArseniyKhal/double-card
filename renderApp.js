@@ -1,11 +1,10 @@
-import { initNewGame } from "./index.js";
+import { initNewGame } from './index.js';
 
 // здесь рендер игрового поля
-const appEl = document.getElementById("app");
+const appEl = document.getElementById('app');
 
 export const renderApp = () => {
-	const appHtml =
-		`<header class="header">
+	const appHtml = `<header class="header">
 				<div class="container">
 					<div class="header__body">
 						<div class="header__timer timer">
@@ -27,13 +26,8 @@ export const renderApp = () => {
 					</div>
 				</div>
 			</section>
-		`
+		`;
 
 	appEl.innerHTML = appHtml;
 	initNewGame();
-}
-
-
-
-
-
+};
