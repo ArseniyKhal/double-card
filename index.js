@@ -2,9 +2,20 @@ import { renderApp } from './renderApp.js';
 import { renderModules, modulesEl } from './components/module-component.js';
 
 export let gameState = {
-	difficultyLevel: 0,
+	difficultyLevel: 1,
 	timeGame: 0,
+	fieldSize: 36,
 };
+export let cardDeck = [];
+
+let maxFieldSize = gameState.fieldSize;
+function getRandomInt(max) {
+	return Math.floor(Math.random() * max);
+}
+
+for (let i = 0; i < gameState.fieldSize; i++) {
+	cardDeck[i] = getRandomInt(maxFieldSize);
+}
 
 if (gameState.difficultyLevel === 0) {
 	renderModules();

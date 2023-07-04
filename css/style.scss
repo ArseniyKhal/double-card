@@ -29,8 +29,8 @@ html {
 }
 
 .container {
-	max-width: 1054px;
-	padding: 0 15px;
+	max-width: 1025px;
+	padding: 0 25px;
 	margin: 0 auto;
 }
 
@@ -149,11 +149,14 @@ html {
 
 .card-field {
 	&__body {
-		background-color: #254dbb;
-		height: 700px;
-		font-size: 86px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		// background-color: #254dbb;
+		gap: 15px;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
+	}
+	&__card {
+		margin: 0 auto;
+		& img {
+		}
 	}
 }

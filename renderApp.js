@@ -1,9 +1,18 @@
-import { initNewGame } from './index.js';
+import { cardDeck, gameState, initNewGame } from './index.js';
 
 // здесь рендер игрового поля
 const appEl = document.getElementById('app');
 
 export const renderApp = () => {
+	const cardHtml = cardDeck
+		.map((card, index) => {
+			return `
+		<div class="card-field__card">
+			<img src="./img/card.svg" alt="card" />
+		</div>`;
+		})
+		.join('');
+
 	const appHtml = `<header class="header">
 				<div class="container">
 					<div class="header__body">
@@ -22,12 +31,13 @@ export const renderApp = () => {
 			<section class="card-field">
 				<div class="container">
 					<div class="card-field__body">
-						поле с картами
+						${cardHtml}
 					</div>
 				</div>
 			</section>
 		`;
 
 	appEl.innerHTML = appHtml;
-	initNewGame();
+	// раскомментировать после отладки
+	// initNewGame();
 };
