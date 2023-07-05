@@ -4,18 +4,20 @@ import { renderModules, modulesEl } from './components/module-component.js';
 export let gameState = {
 	difficultyLevel: 0,
 	timeGame: 0,
-	fieldSize: 36,
+	fieldSize: 18,
 };
 export let cardDeck = [];
 
-let maxFieldSize = gameState.fieldSize;
-function getRandomInt(max) {
-	return Math.floor(Math.random() * max);
+//создаем колоду дублей
+for (let i = 0; i < gameState.fieldSize; i = i + 2) {
+	cardDeck[i] = Math.floor(Math.random() * 36);
+	cardDeck[i + 1] = cardDeck[i];
 }
-
-for (let i = 0; i < gameState.fieldSize; i++) {
-	cardDeck[i] = getRandomInt(maxFieldSize);
+// перемешиваем колоду
+function shuffle(array) {
+	array.sort(() => Math.random() - 0.5);
 }
+shuffle(cardDeck);
 
 if (gameState.difficultyLevel === 0) {
 	renderModules();
