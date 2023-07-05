@@ -8,16 +8,23 @@ export const renderApp = () => {
 		.map((card, index) => {
 			return `
 			<div class="card-field__card card" data-index="${index}">
-				
-				<div class="card__back back" data-index="${index}">
+				<div class="card__back back rotate" data-index="${index}">
 					<div class="back__body card__body">
 						<img src="./img/card.svg" alt="card">
 					</div>
 				</div>
 
-				<div class="card__front front rotate"data-index="${index}">
+				<div class="card__front front"data-index="${index}">
 					<div class="front__body card__body">
-						<img src="./img/card.svg" alt="card">
+						<div class="front__face">
+							<h2 class="front__title">А</h2>
+							<img src="./img/spades.svg" alt="card">
+						</div>
+						<img class="front__picture" src="./img/spades.svg" alt="card">
+						<div class="front__face flipped-over">
+							<h2 class="front__title">А</h2>
+							<img src="./img/spades.svg" alt="card">
+						</div>
 					</div>
 				</div>
 				

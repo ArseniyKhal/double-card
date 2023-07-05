@@ -145,6 +145,12 @@ html {
   border: 4px solid #0080c1;
 }
 
+.rotate {
+  -webkit-transform: rotateY(90deg);
+          transform: rotateY(90deg);
+  opacity: 0;
+}
+
 .header__body {
   min-height: 155px;
   display: -webkit-box;
@@ -263,7 +269,6 @@ html {
 }
 
 .card-field__body {
-  background-color: #254dbb;
   gap: 15px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
@@ -291,16 +296,40 @@ html {
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
-.front__body {
-  background-color: #1c28d4;
-}
-
 .back__body {
   background-color: #c2f5ff;
 }
 
-.rotate {
-  -webkit-transform: rotateY(90deg);
-          transform: rotateY(90deg);
-  opacity: 0;
+.front__body {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.front__body img {
+  width: 29px;
+  height: 25px;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+.front__face img {
+  margin-left: 3px;
+  width: 7px;
+  height: 6px;
+}
+.front__title {
+  color: #000;
+  font-size: 24px;
+}
+.flipped-over {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
 }

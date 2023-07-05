@@ -6,7 +6,7 @@ export let gameState = {
 	timeGame: 0,
 	fieldSize: 18,
 };
-export let cardDeck = [2, 3, 1];
+export let cardDeck = [2, 3, 8];
 
 if (gameState.difficultyLevel == 0) {
 	renderModules();
