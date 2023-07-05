@@ -149,14 +149,46 @@ html {
 
 .card-field {
 	&__body {
-		// background-color: #254dbb;
+		background-color: #254dbb;
 		gap: 15px;
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
 	}
-	&__card {
-		margin: 0 auto;
-		& img {
-		}
+}
+
+.card {
+	position: relative;
+	width: 95px;
+	height: 133px;
+	margin: 0 auto;
+	&__body {
+		border-radius: 4px;
 	}
+	&__front,
+	&__back {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #fff;
+		border-radius: 4px;
+		padding: 6px;
+		transition: all 0.3s ease;
+	}
+	&__front {
+	}
+	&__back {
+	}
+}
+.front__body {
+	background-color: #1c28d4;
+}
+.back__body {
+	background-color: #c2f5ff;
+}
+
+.rotate {
+	transform: rotateY(90deg);
+	opacity: 0;
 }

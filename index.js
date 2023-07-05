@@ -2,30 +2,33 @@ import { renderApp } from './renderApp.js';
 import { renderModules, modulesEl } from './components/module-component.js';
 
 export let gameState = {
-	difficultyLevel: 0,
+	difficultyLevel: 1,
 	timeGame: 0,
 	fieldSize: 18,
 };
-export let cardDeck = [];
+export let cardDeck = [2, 3, 1];
 
-renderModules();
+if (gameState.difficultyLevel == 0) {
+	renderModules();
+} else {
+	renderApp();
+}
+
+// renderModules();
 
 // установка сложности игры
 export const setDifficultyLevel = (difLv) => {
-	gameState.difficultyLevel = Number(difLv);
-	if (gameState.difficultyLevel == 1) {
-		gameState.fieldSize = 6;
-	} else if (gameState.difficultyLevel == 2) {
-		gameState.fieldSize = 12;
-	} else {
-		gameState.fieldSize = 18;
-	}
+	gameState.difficultyLevel = difLv;
+	difLv == 1
+		? (gameState.fieldSize = 6)
+		: difLv == 2
+		? (gameState.fieldSize = 12)
+		: (gameState.fieldSize = 18);
 };
 
 //начинаем новую игру
 export const newGame = () => {
 	cardDeck.length = 0;
-	console.log(`размер поля: ${gameState.fieldSize}`);
 
 	//создаем колоду дублей
 	for (let i = 0; i < gameState.fieldSize; i = i + 2) {

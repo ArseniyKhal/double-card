@@ -38,8 +38,7 @@ export function renderModules() {
 				btnDifLv.classList.remove('select-border');
 			}
 			buttonDifLevel.classList.add('select-border');
-			setDifficultyLevel(buttonDifLevel.dataset.level);
-			console.log(`сложность: ${gameState.difficultyLevel}`);
+			setDifficultyLevel(Number(buttonDifLevel.dataset.level));
 
 			//кнопка СТАРТ
 			btnStartEl.addEventListener('click', () => {

@@ -7,8 +7,20 @@ export const renderApp = () => {
 	const cardHtml = cardDeck
 		.map((card, index) => {
 			return `
-		<div class="card-field__card">
-			<img src="./img/card.svg" alt="card" />
+			<div class="card-field__card card" data-index="${index}">
+				
+				<div class="card__back back" data-index="${index}">
+					<div class="back__body card__body">
+						<img src="./img/card.svg" alt="card">
+					</div>
+				</div>
+
+				<div class="card__front front rotate"data-index="${index}">
+					<div class="front__body card__body">
+						<img src="./img/card.svg" alt="card">
+					</div>
+				</div>
+				
 		</div>`;
 		})
 		.join('');
@@ -39,5 +51,25 @@ export const renderApp = () => {
 
 	appEl.innerHTML = appHtml;
 	// раскомментировать после отладки
-	initNewGame();
+	// initNewGame();
+
+	//поворот карты
+	const cardItems = document.querySelectorAll('.card');
+	for (const cardItem of cardItems) {
+		cardItem.addEventListener('click', () => {
+			const index = cardItem.dataset.index;
+			const cardBacks = document.querySelectorAll('.back');
+			for (const cardBack of cardBacks) {
+				if (cardBack.dataset.index == index) {
+					cardBack.classList.toggle('rotate');
+				}
+			}
+			const cardFronts = document.querySelectorAll('.front');
+			for (const cardFront of cardFronts) {
+				if (cardFront.dataset.index == index) {
+					cardFront.classList.toggle('rotate');
+				}
+			}
+		});
+	}
 };

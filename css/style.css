@@ -263,10 +263,44 @@ html {
 }
 
 .card-field__body {
+  background-color: #254dbb;
   gap: 15px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
 }
-.card-field__card {
+
+.card {
+  position: relative;
+  width: 95px;
+  height: 133px;
   margin: 0 auto;
+}
+.card__body {
+  border-radius: 4px;
+}
+.card__front, .card__back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 6px;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.front__body {
+  background-color: #1c28d4;
+}
+
+.back__body {
+  background-color: #c2f5ff;
+}
+
+.rotate {
+  -webkit-transform: rotateY(90deg);
+          transform: rotateY(90deg);
+  opacity: 0;
 }
