@@ -39,5 +39,5 @@ export const renderApp = () => {
 
 	appEl.innerHTML = appHtml;
 	// раскомментировать после отладки
-	// initNewGame();
+	initNewGame();
 };

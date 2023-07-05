@@ -2,7 +2,7 @@ import { renderApp } from './renderApp.js';
 import { renderModules, modulesEl } from './components/module-component.js';
 
 export let gameState = {
-	difficultyLevel: 1,
+	difficultyLevel: 0,
 	timeGame: 0,
 	fieldSize: 36,
 };
