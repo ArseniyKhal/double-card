@@ -1,5 +1,4 @@
-import { newGame, gameState, setDifficultyLevel } from '../index.js';
-import { renderApp } from '../renderApp.js';
+import { newGame, setDifficultyLevel } from '../index.js';
 
 // здесь рендер всплывающего окна (выбор сложности/результат игры)
 export const modulesEl = document.getElementById('modules');

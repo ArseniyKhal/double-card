@@ -1,4 +1,4 @@
-import { cardDeck, gameState, initNewGame } from './index.js';
+import { cardDeck, initNewGame } from './index.js';
 
 // здесь рендер игрового поля
 const appEl = document.getElementById('app');
