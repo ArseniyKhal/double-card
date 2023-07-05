@@ -1,12 +1,11 @@
-import { gameState, setDifficultyLevel } from "../index.js";
-import { renderApp } from "../renderApp.js";
+import { newGame, gameState, setDifficultyLevel } from '../index.js';
+import { renderApp } from '../renderApp.js';
 
 // здесь рендер всплывающего окна (выбор сложности/результат игры)
-export const modulesEl = document.getElementById("modules");
+export const modulesEl = document.getElementById('modules');
 
 export function renderModules() {
-	const sectionModulHtml =
-		`<section class="modul">
+	const sectionModulHtml = `<section class="modul">
 			<div class="modul__container">
 				<div class="modul__body difficulty-level">
 					<div class="modul__content">
@@ -28,27 +27,27 @@ export function renderModules() {
 	modulesEl.innerHTML = sectionModulHtml;
 
 	// выбор сложности игры
-	const btnStartEl = document.getElementById("btnStart");
-	const buttonsDifficultyLevel = document.querySelectorAll(".difficulty-level__element");
+	const btnStartEl = document.getElementById('btnStart');
+	const buttonsDifficultyLevel = document.querySelectorAll(
+		'.difficulty-level__element'
+	);
 	for (const buttonDifLevel of buttonsDifficultyLevel) {
-
 		//кнопка выбора сложности игры
 		buttonDifLevel.addEventListener('click', () => {
 			for (const btnDifLv of buttonsDifficultyLevel) {
-				btnDifLv.classList.remove("select-border")
-			};
-			buttonDifLevel.classList.add("select-border");
+				btnDifLv.classList.remove('select-border');
+			}
+			buttonDifLevel.classList.add('select-border');
 			setDifficultyLevel(buttonDifLevel.dataset.level);
+			console.log(`сложность: ${gameState.difficultyLevel}`);
 
 			//кнопка СТАРТ
 			btnStartEl.addEventListener('click', () => {
-				modulesEl.classList.add("display-none");
-				buttonDifLevel.classList.remove("select-border");
-				renderApp();
+				modulesEl.classList.add('display-none');
+				buttonDifLevel.classList.remove('select-border');
+				newGame();
 				//тут будет запуск таймера игры.
-			})
+			});
 		});
 	}
 }
-
-
