@@ -279,6 +279,7 @@ html {
   width: 95px;
   height: 133px;
   margin: 0 auto;
+  cursor: pointer;
 }
 .card__body {
   border-radius: 4px;

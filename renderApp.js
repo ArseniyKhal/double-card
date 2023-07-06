@@ -19,27 +19,27 @@ export const renderApp = () => {
 			}
 			//вычисляем цвет
 			let redCard = false;
-			if (suit == 'hearts' || suit == 'diamonds') {
+			if (suit === 'hearts' || suit === 'diamonds') {
 				redCard = true;
 			}
 
 			//вычисляем ранг карты
 			let rankCart = '';
-			if (card == 0 || card == 9 || card == 18 || card == 27) {
+			if (card === 0 || card === 9 || card === 18 || card === 27) {
 				rankCart = 'A';
-			} else if (card == 1 || card == 10 || card == 19 || card == 28) {
+			} else if (card === 1 || card === 10 || card === 19 || card === 28) {
 				rankCart = 'K';
-			} else if (card == 2 || card == 11 || card == 20 || card == 29) {
+			} else if (card === 2 || card === 11 || card === 20 || card === 29) {
 				rankCart = 'Q';
-			} else if (card == 3 || card == 12 || card == 21 || card == 30) {
+			} else if (card === 3 || card === 12 || card === 21 || card === 30) {
 				rankCart = 'J';
-			} else if (card == 4 || card == 13 || card == 22 || card == 31) {
+			} else if (card === 4 || card === 13 || card === 22 || card === 31) {
 				rankCart = '10';
-			} else if (card == 5 || card == 14 || card == 23 || card == 32) {
+			} else if (card === 5 || card === 14 || card === 23 || card === 32) {
 				rankCart = '9';
-			} else if (card == 6 || card == 15 || card == 24 || card == 33) {
+			} else if (card === 6 || card === 15 || card === 24 || card === 33) {
 				rankCart = '8';
-			} else if (card == 7 || card == 16 || card == 25 || card == 34) {
+			} else if (card === 7 || card === 16 || card === 25 || card === 34) {
 				rankCart = '7';
 			} else {
 				rankCart = '6';
@@ -110,13 +110,13 @@ export const renderApp = () => {
 			const index = cardItem.dataset.index;
 			const cardBacks = document.querySelectorAll('.back');
 			for (const cardBack of cardBacks) {
-				if (cardBack.dataset.index == index) {
+				if (cardBack.dataset.index === index) {
 					cardBack.classList.toggle('rotate');
 				}
 			}
 			const cardFronts = document.querySelectorAll('.front');
 			for (const cardFront of cardFronts) {
-				if (cardFront.dataset.index == index) {
+				if (cardFront.dataset.index === index) {
 					cardFront.classList.toggle('rotate');
 				}
 			}

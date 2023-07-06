@@ -4,11 +4,11 @@ import { renderModules, modulesEl } from './components/module-component.js';
 export let gameState = {
 	difficultyLevel: 0,
 	timeGame: 0,
-	fieldSize: 18,
+	fieldSize: 6,
 };
 export let cardDeck = [2, 11, 22, 31, 0, 36];
 
-if (gameState.difficultyLevel == 0) {
+if (gameState.difficultyLevel === 0) {
 	renderModules();
 } else {
 	renderApp();
@@ -19,9 +19,9 @@ if (gameState.difficultyLevel == 0) {
 // установка сложности игры
 export const setDifficultyLevel = (difLv) => {
 	gameState.difficultyLevel = difLv;
-	difLv == 1
+	difLv === 1
 		? (gameState.fieldSize = 6)
-		: difLv == 2
+		: difLv === 2
 		? (gameState.fieldSize = 12)
 		: (gameState.fieldSize = 18);
 };

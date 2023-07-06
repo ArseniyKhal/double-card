@@ -2,3 +2,4 @@
 'useTabs': true
 'semi': true
 'singleQuote': true
+'endOfLine': auto
