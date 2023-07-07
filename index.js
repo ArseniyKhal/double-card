@@ -32,7 +32,7 @@ export const newGame = () => {
 
 	//создаем колоду дублей
 	for (let i = 0; i < gameState.fieldSize; i = i + 2) {
-		cardDeck[i] = Math.floor(Math.random() * 35);
+		cardDeck[i] = Math.floor(Math.random() * 36);
 		cardDeck[i + 1] = cardDeck[i];
 	}
 	// перемешиваем колоду
