@@ -7,18 +7,34 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"format": "prettier --write",
 		"lint:js": "eslint ./src/**/*.js",
-		"lint:css": "stylelint './src/**.css'"
+		"lint:css": "stylelint './src/**.css'",
+		"build": "cross-env NODE_ENV=production webpack",
+		"start": "webpack-dev-server --mode development --open"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
+		"copy-webpack-plugin": "^11.0.0",
+		"css-loader": "^6.8.1",
+		"css-minimizer-webpack-plugin": "^5.0.1",
 		"eslint": "^8.44.0",
 		"eslint-config-prettier": "^8.8.0",
 		"eslint-plugin-prettier": "^4.2.1",
+		"html-webpack-plugin": "^5.5.3",
+		"mini-css-extract-plugin": "^2.7.6",
 		"prettier": "^2.8.8",
+		"sass": "^1.63.6",
+		"sass-loader": "^13.3.2",
+		"style-loader": "^3.3.3",
 		"stylelint": "^15.9.0",
 		"stylelint-config-standard": "^33.0.0",
-		"stylelint-prettier": "^3.0.0"
+		"stylelint-prettier": "^3.0.0",
+		"webpack": "^5.88.1",
+		"webpack-cli": "^5.1.4",
+		"webpack-dev-server": "^4.15.1"
+	},
+	"dependencies": {
+		"cross-env": "^7.0.3"
 	}
 }

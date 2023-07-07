@@ -1,4 +1,5 @@
-import { cardDeck, initNewGame } from './index.js';
+// import shirtСard from '../img/card.svg';
+import { cardDeck } from '../index.js';
 
 // здесь рендер игрового поля
 const appEl = document.getElementById('app');
@@ -49,7 +50,7 @@ export const renderApp = () => {
 			<div class="card-field__card card" data-index="${index}" data-card="${card}">
 				<div class="card__back back rotate-back" data-index="${index}">
 					<div class="back__body card__body">
-						<img src="./img/card.svg" alt="card">
+						<img src="../img/card.svg" alt="card">
 					</div>
 				</div>
 
@@ -59,14 +60,14 @@ export const renderApp = () => {
 							<h2 class="front__title" ${
 								redCard ? 'style="color: #ff4545"' : ''
 							}>${rankCart}</h2>
-							<img src="./img/${suit}.svg" alt="card">
+							<img src="../img/${suit}.svg" alt="card">
 						</div>
-						<img class="front__picture" src="./img/${suit}.svg" alt="card">
+						<img class="front__picture" src="../img/${suit}.svg" alt="card">
 						<div class="front__face flipped-over">
 							<h2 class="front__title" ${
 								redCard ? 'style="color: #ff4545"' : ''
 							}>${rankCart}</h2>
-							<img src="./img/${suit}.svg" alt="card">
+							<img src="../img/${suit}.svg" alt="card">
 						</div>
 					</div>
 				</div>
@@ -100,5 +101,4 @@ export const renderApp = () => {
 		`;
 
 	appEl.innerHTML = appHtml;
-	initNewGame();
 };

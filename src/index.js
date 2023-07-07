@@ -1,12 +1,13 @@
-import { renderApp } from './renderApp.js';
-import { renderModules, modulesEl } from './components/module-component.js';
+import './css/style.scss';
+import { renderApp } from './js/renderApp.js';
+import { renderModules, modulesEl } from './js/components/module-component.js';
 
 export let gameState = {
 	difficultyLevel: 0,
 	timeGame: 0,
 	fieldSize: 6,
 };
-export let cardDeck = [2, 11, 22, 31, 0, 36];
+export let cardDeck = [];
 
 if (gameState.difficultyLevel === 0) {
 	renderModules();
@@ -42,10 +43,11 @@ export const newGame = () => {
 	}
 	shuffle(cardDeck);
 	renderApp();
+	initNewGame();
 };
 
 //новая игра
-export function initNewGame() {
+function initNewGame() {
 	// кнопка новая игра
 	const buttonNewGame = document.getElementById('newGame');
 	buttonNewGame.addEventListener('click', () => {
