@@ -2,7 +2,7 @@ import { renderApp } from './renderApp.js';
 import { renderModules, modulesEl } from './components/module-component.js';
 
 export let gameState = {
-	difficultyLevel: 0,
+	difficultyLevel: 1,
 	timeGame: 0,
 	fieldSize: 6,
 };
@@ -44,9 +44,9 @@ export const newGame = () => {
 };
 
 // кнопка новая игра
-export const initNewGame = () => {
+export function initNewGame() {
 	const buttonNewGame = document.getElementById('newGame');
 	buttonNewGame.addEventListener('click', () => {
 		modulesEl.classList.remove('display-none');
 	});
-};
+}

@@ -100,21 +100,32 @@ export const renderApp = () => {
 		`;
 
 	appEl.innerHTML = appHtml;
-	// раскомментировать после отладки
+
+	const cardItems = document.querySelectorAll('.card');
+	const cardBacks = document.querySelectorAll('.back');
+	const cardFronts = document.querySelectorAll('.front');
+
 	initNewGame();
+	//разворот карт через 5 сек
+	setTimeout(sek5Rotate, 5000);
+	function sek5Rotate() {
+		for (const cardBack of cardBacks) {
+			cardBack.classList.toggle('rotate');
+		}
+		for (const cardFront of cardFronts) {
+			cardFront.classList.toggle('rotate');
+		}
+	}
 
 	//поворот карты
-	const cardItems = document.querySelectorAll('.card');
 	for (const cardItem of cardItems) {
 		cardItem.addEventListener('click', () => {
 			const index = cardItem.dataset.index;
-			const cardBacks = document.querySelectorAll('.back');
 			for (const cardBack of cardBacks) {
 				if (cardBack.dataset.index === index) {
 					cardBack.classList.toggle('rotate');
 				}
 			}
-			const cardFronts = document.querySelectorAll('.front');
 			for (const cardFront of cardFronts) {
 				if (cardFront.dataset.index === index) {
 					cardFront.classList.toggle('rotate');
