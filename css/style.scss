@@ -29,8 +29,8 @@ html {
 }
 
 .container {
-	max-width: 1054px;
-	padding: 0 15px;
+	max-width: 1025px;
+	padding: 0 25px;
 	margin: 0 auto;
 }
 
@@ -58,6 +58,11 @@ html {
 
 .select-border {
 	border: 4px solid $TextColor3;
+}
+
+.rotate {
+	transform: rotateY(90deg);
+	opacity: 0;
 }
 
 .header {
@@ -149,11 +154,68 @@ html {
 
 .card-field {
 	&__body {
-		background-color: #254dbb;
-		height: 700px;
-		font-size: 86px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		// background-color: #254dbb;
+		gap: 15px;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
 	}
+}
+
+.card {
+	position: relative;
+	width: 95px;
+	height: 133px;
+	margin: 0 auto;
+	cursor: pointer;
+	&__body {
+		border-radius: 4px;
+	}
+	&__front,
+	&__back {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #fff;
+		border-radius: 4px;
+		padding: 6px;
+		transition: all 0.3s ease;
+	}
+	&__front {
+	}
+	&__back {
+	}
+}
+.back__body {
+	background-color: #c2f5ff;
+}
+.front {
+	&__body {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		& img {
+			width: 29px;
+			height: 25px;
+			align-self: center;
+		}
+	}
+	&__face {
+		& img {
+			margin-left: 3px;
+			width: 7px;
+			height: 6px;
+		}
+	}
+	&__title {
+		color: #000;
+		font-size: 24px;
+	}
+	&__picture {
+	}
+}
+.flipped-over {
+	transform: rotate(180deg);
 }
