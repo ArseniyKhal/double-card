@@ -46,8 +46,8 @@ export const renderApp = () => {
 			}
 
 			return `
-			<div class="card-field__card card" data-index="${index}">
-				<div class="card__back back rotate" data-index="${index}">
+			<div class="card-field__card card" data-index="${index}" data-card="${card}">
+				<div class="card__back back rotate-back" data-index="${index}">
 					<div class="back__body card__body">
 						<img src="./img/card.svg" alt="card">
 					</div>
@@ -100,37 +100,5 @@ export const renderApp = () => {
 		`;
 
 	appEl.innerHTML = appHtml;
-
-	const cardItems = document.querySelectorAll('.card');
-	const cardBacks = document.querySelectorAll('.back');
-	const cardFronts = document.querySelectorAll('.front');
-
 	initNewGame();
-	//разворот карт через 5 сек
-	setTimeout(sek5Rotate, 5000);
-	function sek5Rotate() {
-		for (const cardBack of cardBacks) {
-			cardBack.classList.toggle('rotate');
-		}
-		for (const cardFront of cardFronts) {
-			cardFront.classList.toggle('rotate');
-		}
-	}
-
-	//поворот карты
-	for (const cardItem of cardItems) {
-		cardItem.addEventListener('click', () => {
-			const index = cardItem.dataset.index;
-			for (const cardBack of cardBacks) {
-				if (cardBack.dataset.index === index) {
-					cardBack.classList.toggle('rotate');
-				}
-			}
-			for (const cardFront of cardFronts) {
-				if (cardFront.dataset.index === index) {
-					cardFront.classList.toggle('rotate');
-				}
-			}
-		});
-	}
 };

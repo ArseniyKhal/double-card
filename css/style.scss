@@ -65,6 +65,11 @@ html {
 	opacity: 0;
 }
 
+.rotate-back {
+	transform: rotateY(-90deg);
+	opacity: 0;
+}
+
 .header {
 	&__body {
 		min-height: 155px;
@@ -154,7 +159,6 @@ html {
 
 .card-field {
 	&__body {
-		// background-color: #254dbb;
 		gap: 15px;
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(95px, 1fr));
@@ -173,10 +177,10 @@ html {
 	&__front,
 	&__back {
 		position: absolute;
-		top: 0;
-		left: 0;
 		width: 100%;
 		height: 100%;
+		top: 0;
+		left: 0;
 		background-color: #fff;
 		border-radius: 4px;
 		padding: 6px;
@@ -213,9 +217,4 @@ html {
 		color: #000;
 		font-size: 24px;
 	}
-	&__picture {
-	}
-}
-.flipped-over {
-	transform: rotate(180deg);
 }

@@ -151,6 +151,12 @@ html {
   opacity: 0;
 }
 
+.rotate-back {
+  -webkit-transform: rotateY(-90deg);
+          transform: rotateY(-90deg);
+  opacity: 0;
+}
+
 .header__body {
   min-height: 155px;
   display: -webkit-box;
@@ -286,10 +292,10 @@ html {
 }
 .card__front, .card__back {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
   background-color: #fff;
   border-radius: 4px;
   padding: 6px;
@@ -328,9 +334,4 @@ html {
 .front__title {
   color: #000;
   font-size: 24px;
-}
-.flipped-over {
-  -webkit-transform: rotate(180deg);
-      -ms-transform: rotate(180deg);
-          transform: rotate(180deg);
 }

@@ -2,7 +2,7 @@ import { renderApp } from './renderApp.js';
 import { renderModules, modulesEl } from './components/module-component.js';
 
 export let gameState = {
-	difficultyLevel: 1,
+	difficultyLevel: 0,
 	timeGame: 0,
 	fieldSize: 6,
 };
@@ -14,6 +14,7 @@ if (gameState.difficultyLevel === 0) {
 	renderApp();
 }
 
+// renderApp();
 // renderModules();
 
 // установка сложности игры
@@ -43,10 +44,58 @@ export const newGame = () => {
 	renderApp();
 };
 
-// кнопка новая игра
+//новая игра
 export function initNewGame() {
+	// кнопка новая игра
 	const buttonNewGame = document.getElementById('newGame');
 	buttonNewGame.addEventListener('click', () => {
 		modulesEl.classList.remove('display-none');
 	});
+
+	const cardItems = document.querySelectorAll('.card');
+	const cardBacks = document.querySelectorAll('.back');
+	const cardFronts = document.querySelectorAll('.front');
+
+	//разворот карт через 5 сек
+	setTimeout(sek5Rotate, 5000);
+	function sek5Rotate() {
+		for (const cardBack of cardBacks) {
+			cardBack.classList.toggle('rotate-back');
+		}
+		for (const cardFront of cardFronts) {
+			cardFront.classList.toggle('rotate');
+		}
+	}
+
+	//поворот карты по клику
+	let firstOpenCard = null;
+	let oneOpenCard = false;
+	for (const cardItem of cardItems) {
+		cardItem.addEventListener('click', () => {
+			oneOpenCard = !oneOpenCard;
+			if (oneOpenCard) {
+				firstOpenCard = Number(cardItem.dataset.card);
+			}
+
+			if (!oneOpenCard) {
+				if (firstOpenCard === Number(cardItem.dataset.card)) {
+					alert('Вы победили');
+				} else {
+					alert('Вы проиграли');
+				}
+			}
+
+			const index = cardItem.dataset.index;
+			for (const cardBack of cardBacks) {
+				if (cardBack.dataset.index === index) {
+					cardBack.classList.toggle('rotate-back');
+				}
+			}
+			for (const cardFront of cardFronts) {
+				if (cardFront.dataset.index === index) {
+					cardFront.classList.toggle('rotate');
+				}
+			}
+		});
+	}
 }
