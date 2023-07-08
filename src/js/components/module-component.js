@@ -1,4 +1,4 @@
-import { newGame, setDifficultyLevel } from '../index.js';
+import { newGame, setDifficultyLevel } from '../../index.js';
 
 // здесь рендер всплывающего окна (выбор сложности/результат игры)
 export const modulesEl = document.getElementById('modules');

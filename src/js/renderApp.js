@@ -1,4 +1,5 @@
-import { cardDeck, initNewGame } from './index.js';
+// import shirtСard from '../img/card.svg';
+import { cardDeck } from '../index.js';
 
 // здесь рендер игрового поля
 const appEl = document.getElementById('app');
@@ -46,10 +47,10 @@ export const renderApp = () => {
 			}
 
 			return `
-			<div class="card-field__card card" data-index="${index}">
-				<div class="card__back back rotate" data-index="${index}">
+			<div class="card-field__card card" data-index="${index}" data-card="${card}">
+				<div class="card__back back rotate-back" data-index="${index}">
 					<div class="back__body card__body">
-						<img src="./img/card.svg" alt="card">
+						<img src="../img/card.svg" alt="card">
 					</div>
 				</div>
 
@@ -59,14 +60,14 @@ export const renderApp = () => {
 							<h2 class="front__title" ${
 								redCard ? 'style="color: #ff4545"' : ''
 							}>${rankCart}</h2>
-							<img src="./img/${suit}.svg" alt="card">
+							<img src="../img/${suit}.svg" alt="card">
 						</div>
-						<img class="front__picture" src="./img/${suit}.svg" alt="card">
+						<img class="front__picture" src="../img/${suit}.svg" alt="card">
 						<div class="front__face flipped-over">
 							<h2 class="front__title" ${
 								redCard ? 'style="color: #ff4545"' : ''
 							}>${rankCart}</h2>
-							<img src="./img/${suit}.svg" alt="card">
+							<img src="../img/${suit}.svg" alt="card">
 						</div>
 					</div>
 				</div>
@@ -100,26 +101,4 @@ export const renderApp = () => {
 		`;
 
 	appEl.innerHTML = appHtml;
-	// раскомментировать после отладки
-	initNewGame();
-
-	//поворот карты
-	const cardItems = document.querySelectorAll('.card');
-	for (const cardItem of cardItems) {
-		cardItem.addEventListener('click', () => {
-			const index = cardItem.dataset.index;
-			const cardBacks = document.querySelectorAll('.back');
-			for (const cardBack of cardBacks) {
-				if (cardBack.dataset.index === index) {
-					cardBack.classList.toggle('rotate');
-				}
-			}
-			const cardFronts = document.querySelectorAll('.front');
-			for (const cardFront of cardFronts) {
-				if (cardFront.dataset.index === index) {
-					cardFront.classList.toggle('rotate');
-				}
-			}
-		});
-	}
 };
