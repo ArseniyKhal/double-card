@@ -98,6 +98,13 @@ html {
 	}
 }
 
+.volume {
+	&__min::after {
+		content: ".";
+		margin-right: -15px;
+	}
+}
+
 .modul {
 	position: absolute;
 	top: 0;

@@ -44,7 +44,6 @@ export function renderModules() {
 				modulesEl.classList.add('display-none');
 				buttonDifLevel.classList.remove('select-border');
 				newGame();
-				//тут будет запуск таймера игры.
 			});
 		});
 	}

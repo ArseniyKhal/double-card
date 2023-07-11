@@ -1,13 +1,18 @@
 import './css/style.scss';
 import { renderApp } from './js/renderApp.js';
 import { renderModules, modulesEl } from './js/components/module-component.js';
+import { format } from 'date-fns';
 
 export let gameState = {
-	difficultyLevel: 0,
-	timeGame: 0,
+	difficultyLevel: 1,
 	fieldSize: 6,
+	timeGame: {
+		sec: 0,
+		min: 0,
+	},
 };
-export let cardDeck = [];
+export let cardDeck = [2, 5, 13, 18, 22, 1];
+let startGameTime = new Date();
 
 if (gameState.difficultyLevel === 0) {
 	renderModules();
@@ -15,6 +20,7 @@ if (gameState.difficultyLevel === 0) {
 	renderApp();
 }
 
+initNewGame();
 // renderApp();
 // renderModules();
 
@@ -59,31 +65,71 @@ function initNewGame() {
 	const cardFronts = document.querySelectorAll('.front');
 
 	//разворот карт через 5 сек
-	setTimeout(sek5Rotate, 5000);
-	function sek5Rotate() {
+	setTimeout(seс5Rotate, 3000);
+	function seс5Rotate() {
 		for (const cardBack of cardBacks) {
 			cardBack.classList.toggle('rotate-back');
 		}
 		for (const cardFront of cardFronts) {
 			cardFront.classList.toggle('rotate');
 		}
+		setTaimer();
+	}
+
+	// таймер игры
+	let seconds = gameState.timeGame.sec;
+	let minutes = gameState.timeGame.min;
+
+	function setTaimer() {
+		seconds++;
+
+		setInterval(() => {
+			minutes = Number(minutes);
+			if (seconds === 60) {
+				seconds = 0;
+				minutes++;
+			}
+			if (seconds < 10) {
+				seconds = '0' + seconds;
+			}
+			if (minutes < 10) {
+				minutes = '0' + minutes;
+			}
+			document.getElementById('volume-minut').innerHTML = minutes;
+			document.getElementById('volume-sec').innerHTML = seconds;
+			seconds++;
+		}, 1000);
+
+		startGameTime = new Date();
 	}
 
 	//поворот карты по клику
-	let firstOpenCard = null;
+	let firstOpenCard = {};
 	let oneOpenCard = false;
 	for (const cardItem of cardItems) {
 		cardItem.addEventListener('click', () => {
 			oneOpenCard = !oneOpenCard;
 			if (oneOpenCard) {
-				firstOpenCard = Number(cardItem.dataset.card);
-			}
-
-			if (!oneOpenCard) {
-				if (firstOpenCard === Number(cardItem.dataset.card)) {
-					alert('Вы победили');
+				firstOpenCard.card = Number(cardItem.dataset.card);
+				firstOpenCard.index = Number(cardItem.dataset.index);
+			} else {
+				if (firstOpenCard.index === Number(cardItem.dataset.index)) {
+					alert('Только не по этой же карте!');
+					return;
 				} else {
-					alert('Вы проиграли');
+					if (firstOpenCard.card === Number(cardItem.dataset.card)) {
+						alert('Вы победили');
+
+						// вывод результата, остановка таймера
+					} else {
+						alert('Вы проиграли');
+						let resultTime = format(
+							new Date(Math.floor(new Date() - startGameTime)),
+							'mm.ss'
+						);
+						console.log(resultTime);
+						// вывод результата, остановка таймера
+					}
 				}
 			}
 
