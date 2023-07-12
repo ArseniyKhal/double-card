@@ -1,31 +1,21 @@
 import './css/style.scss';
 import { renderApp } from './js/renderApp.js';
-import {
-	renderModules,
-	modulesEl,
-	giveResultTime,
-} from './js/components/module-component.js';
+import { renderModules, modulesEl } from './js/components/module-component.js';
 
 // СРИСОК ПРОБЛЕМ:
 // таймер не останавливается после окончания игры
-// в результат не выводится время игры
 
 export let gameState = {
 	difficultyLevel: 0,
 	state: 'start',
-	timeGame: {
-		sec: 0,
-		min: 0,
-	},
+	timeGame: '00.00',
 };
 export let cardDeck = [];
-// let seconds = gameState.timeGame.sec;
-// let minutes = gameState.timeGame.min;
 
 if (gameState.difficultyLevel === 0) {
 	renderModules({ state: gameState.state });
 } else {
-	renderApp();
+	renderApp({ time: gameState.timeGame });
 }
 
 // renderModules();
@@ -41,8 +31,8 @@ export const setDifficultyLevel = (difLv) =>
 //начинаем новую игру
 export const newGame = () => {
 	cardDeck.length = 0;
-	gameState.timeGame.sec = 0;
-	gameState.timeGame.min = 0;
+	// gameState.timeGame.sec = 0;
+	// gameState.timeGame.min = 0;
 
 	//создаем колоду дублей
 	for (let i = 0; i < gameState.difficultyLevel; i = i + 2) {
@@ -54,10 +44,9 @@ export const newGame = () => {
 		array.sort(() => Math.random() - 0.5);
 	}
 	shuffle(cardDeck);
-	renderApp();
+	renderApp({ time: gameState.timeGame });
 	initNewGame();
 };
-let loss = false;
 
 //новая игра
 function initNewGame() {
@@ -84,23 +73,26 @@ function initNewGame() {
 
 	// таймер игры
 	function TaimerGo() {
-		gameState.timeGame.sec++;
+		let seconds = 1;
+		let minutes = 0;
+		// seconds++;
 		let intervalId = setInterval(() => {
-			gameState.timeGame.min = Number(gameState.timeGame.min);
-			if (gameState.timeGame.sec === 60) {
-				gameState.timeGame.sec = 0;
-				gameState.timeGame.min++;
+			minutes = Number(minutes);
+			if (seconds === 60) {
+				seconds = 0;
+				minutes++;
 			}
-			if (gameState.timeGame.sec < 10) {
-				gameState.timeGame.sec = '0' + gameState.timeGame.sec;
+			if (seconds < 10) {
+				seconds = '0' + seconds;
 			}
-			if (gameState.timeGame.min < 10) {
-				gameState.timeGame.min = '0' + gameState.timeGame.min;
+			if (minutes < 10) {
+				minutes = '0' + minutes;
 			}
-			document.querySelector('.volume__min').innerHTML = gameState.timeGame.min;
-			document.querySelector('.volume__sec').innerHTML = gameState.timeGame.sec;
-			gameState.timeGame.sec++;
+			gameState.timeGame = `${minutes}.${seconds}`;
+			document.querySelector('.volume').innerHTML = gameState.timeGame;
+			seconds++;
 		}, 1000);
+
 		// не получается остановить таймер
 		if (gameState.state === 'win' || gameState.state === 'loss') {
 			console.log('стоп');
@@ -124,18 +116,18 @@ function initNewGame() {
 					if (firstOpenCard.card === Number(cardItem.dataset.card)) {
 						// победа
 						gameState.state = 'win';
-						giveResultTime({
-							time: `${gameState.timeGame.min}.${gameState.timeGame.sec}`,
+						renderModules({
+							state: gameState.state,
+							time: gameState.timeGame,
 						});
-						renderModules({ state: gameState.state });
 						modulesEl.classList.remove('display-none');
 					} else {
 						// проигрыш
 						gameState.state = 'loss';
-						giveResultTime({
-							time: `${gameState.timeGame.min}.${gameState.timeGame.sec}`,
+						renderModules({
+							state: gameState.state,
+							time: gameState.timeGame,
 						});
-						renderModules({ state: gameState.state });
 						modulesEl.classList.remove('display-none');
 					}
 				}

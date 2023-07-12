@@ -193,14 +193,6 @@ html {
   font-size: 64px;
 }
 
-.volume__min, .volume__sec {
-  line-height: 1.125;
-}
-.volume__min::after {
-  content: ".";
-  margin-right: -15px;
-}
-
 .modul {
   position: absolute;
   top: 0;

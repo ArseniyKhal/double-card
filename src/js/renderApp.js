@@ -4,7 +4,7 @@ import { cardDeck } from '../index.js';
 // здесь рендер игрового поля
 const appEl = document.getElementById('app');
 
-export const renderApp = () => {
+export const renderApp = ({ time }) => {
 	const cardHtml = cardDeck
 		.map((card, index) => {
 			//вычисляем масть
@@ -84,10 +84,7 @@ export const renderApp = () => {
 								<div class="timer__min">min</div>
 								<div class="timer__sek">sek</div>
 							</div>
-							<div class="timer__volume volume">
-								<span class="volume__min" id="volume-minut">00</span>
-								<span class="volume__sec" id="volume-sec">00</span>
-							</div>
+							<div class="timer__volume volume">00.00</div>
 						</div>
 						<button class="header__button button" id="newGame">Начать заново</button>
 					</div>

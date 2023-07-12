@@ -1,9 +1,14 @@
-import { newGame, setDifficultyLevel } from '../../index.js';
+import {
+	gameState,
+	newGame,
+	setDifficultyLevel,
+	setModuleToStart,
+} from '../../index.js';
 
 // здесь рендер всплывающего окна (выбор сложности/результат игры)
 export const modulesEl = document.getElementById('modules');
 
-export function renderModules({ state }) {
+export function renderModules({ state, time }) {
 	let modulContent = ``;
 	if (state === 'win' || state === 'loss') {
 		modulContent = `
@@ -16,8 +21,7 @@ export function renderModules({ state }) {
 			}</h2>
 			<p class="result__text">Затраченное время:</p>
 			<div class="result__timer timer__volume volume">
-				<span class="volume__min" id="volume-minut">00</span>
-				<span class="volume__sec" id="volume-sec">00</span>
+			${time}
 			</div>
 		</div>`;
 	} else {
@@ -25,9 +29,9 @@ export function renderModules({ state }) {
 		<div class="difficulty-level">
 			<h2 class="difficulty-level__title">Выбери <br> сложность</h2>
 			<div class="difficulty-level__row">
-				<div class="difficulty-level__element" data-level="1">1</div>
-				<div class="difficulty-level__element" data-level="2">2</div>
-				<div class="difficulty-level__element" data-level="3">3</div>
+				<div class="difficulty-level__element" data-level="6">1</div>
+				<div class="difficulty-level__element" data-level="12">2</div>
+				<div class="difficulty-level__element" data-level="18">3</div>
 			</div>
 		</div>`;
 	}
@@ -40,7 +44,7 @@ export function renderModules({ state }) {
 					</div>
 					<div class="modul__button">
 						<button class="difficulty-level__button button" id="btnStart">${
-							state === 'start' ? 'старт' : 'Играть снова'
+							state === 'start' ? 'Старт' : 'Играть снова'
 						}</button>
 					</div>
 				</div>
@@ -62,13 +66,24 @@ export function renderModules({ state }) {
 			}
 			buttonDifLevel.classList.add('select-border');
 			setDifficultyLevel(Number(buttonDifLevel.dataset.level));
+			initBtnStart();
+		});
+	}
+	initBtnStart();
 
-			//кнопка СТАРТ
-			btnStartEl.addEventListener('click', () => {
+	//кнопка Старт/Играть снова
+	function initBtnStart() {
+		btnStartEl.addEventListener('click', () => {
+			for (const btnDifLv of buttonsDifficultyLevel) {
+				btnDifLv.classList.remove('select-border');
+			}
+			if (gameState.state === 'start') {
 				modulesEl.classList.add('display-none');
-				buttonDifLevel.classList.remove('select-border');
 				newGame();
-			});
+			} else {
+				setModuleToStart();
+				renderModules({ state: gameState.state });
+			}
 		});
 	}
 }

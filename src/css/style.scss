@@ -98,17 +98,6 @@ html {
 	}
 }
 
-.volume {
-	&__min,
-	&__sec {
-		line-height: 1.125;
-	}
-	&__min::after {
-		content: ".";
-		margin-right: -15px;
-	}
-}
-
 .modul {
 	position: absolute;
 	top: 0;
