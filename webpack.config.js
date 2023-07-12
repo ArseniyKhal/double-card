@@ -13,7 +13,6 @@ module.exports = {
 		assetModuleFilename: '[name][ext]',
 	},
 	mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-	// mode: 'production',
 	module: {
 		rules: [
 			{

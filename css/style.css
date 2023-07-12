@@ -193,6 +193,9 @@ html {
   font-size: 64px;
 }
 
+.volume__min, .volume__sec {
+  line-height: 1.125;
+}
 .volume__min::after {
   content: ".";
   margin-right: -15px;
@@ -217,7 +220,7 @@ html {
   border-radius: 12px;
   max-width: 480px;
   height: 459px;
-  padding: 50px 20px;
+  padding: 32px 20px 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -234,6 +237,7 @@ html {
   font-size: 40px;
   color: #004980;
   line-height: 1.2;
+  margin-top: 20px;
   margin-bottom: 48px;
 }
 .difficulty-level__row {
@@ -277,6 +281,23 @@ html {
   -webkit-transform: translateY(1px);
       -ms-transform: translateY(1px);
           transform: translateY(1px);
+}
+
+.result {
+  color: #000;
+}
+.result__picture {
+  margin-bottom: 8px;
+}
+.result__title {
+  font-size: 40px;
+  color: #004980;
+  line-height: 1.2;
+  margin-bottom: 28px;
+}
+.result__text {
+  margin-bottom: 10px;
+  font-size: 24px;
 }
 
 .card-field__body {

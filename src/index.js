@@ -1,28 +1,29 @@
 import './css/style.scss';
 import { renderApp } from './js/renderApp.js';
 import { renderModules, modulesEl } from './js/components/module-component.js';
-import { format } from 'date-fns';
 
 export let gameState = {
-	difficultyLevel: 1,
+	difficultyLevel: 0,
 	fieldSize: 6,
+	state: 'start',
 	timeGame: {
 		sec: 0,
 		min: 0,
 	},
 };
-export let cardDeck = [2, 5, 13, 18, 22, 1];
-let startGameTime = new Date();
+export let cardDeck = [];
+let seconds = gameState.timeGame.sec;
+let minutes = gameState.timeGame.min;
 
 if (gameState.difficultyLevel === 0) {
-	renderModules();
+	renderModules({ state: gameState.state });
 } else {
 	renderApp();
 }
 
-initNewGame();
-// renderApp();
 // renderModules();
+// initNewGame();
+// renderApp();
 
 // установка сложности игры
 export const setDifficultyLevel = (difLv) => {
@@ -37,6 +38,8 @@ export const setDifficultyLevel = (difLv) => {
 //начинаем новую игру
 export const newGame = () => {
 	cardDeck.length = 0;
+	seconds = 0;
+	minutes = 0;
 
 	//создаем колоду дублей
 	for (let i = 0; i < gameState.fieldSize; i = i + 2) {
@@ -63,27 +66,23 @@ function initNewGame() {
 	const cardItems = document.querySelectorAll('.card');
 	const cardBacks = document.querySelectorAll('.back');
 	const cardFronts = document.querySelectorAll('.front');
+	let loss = false;
 
 	//разворот карт через 5 сек
-	setTimeout(seс5Rotate, 3000);
-	function seс5Rotate() {
+	setTimeout(() => {
 		for (const cardBack of cardBacks) {
 			cardBack.classList.toggle('rotate-back');
 		}
 		for (const cardFront of cardFronts) {
 			cardFront.classList.toggle('rotate');
 		}
-		setTaimer();
-	}
+		TaimerGo();
+	}, 1000);
 
 	// таймер игры
-	let seconds = gameState.timeGame.sec;
-	let minutes = gameState.timeGame.min;
-
-	function setTaimer() {
+	function TaimerGo() {
 		seconds++;
-
-		setInterval(() => {
+		let intervalId = setInterval(() => {
 			minutes = Number(minutes);
 			if (seconds === 60) {
 				seconds = 0;
@@ -95,21 +94,23 @@ function initNewGame() {
 			if (minutes < 10) {
 				minutes = '0' + minutes;
 			}
-			document.getElementById('volume-minut').innerHTML = minutes;
-			document.getElementById('volume-sec').innerHTML = seconds;
+			document.querySelector('.volume__min').innerHTML = minutes;
+			document.querySelector('.volume__sec').innerHTML = seconds;
 			seconds++;
 		}, 1000);
-
-		startGameTime = new Date();
+		// не получается остановить таймер
+		if (loss === true) {
+			console.log('стоп');
+			clearInterval(intervalId);
+		}
 	}
 
 	//поворот карты по клику
-	let firstOpenCard = {};
-	let oneOpenCard = false;
+	let firstOpenCard = { open: false };
 	for (const cardItem of cardItems) {
 		cardItem.addEventListener('click', () => {
-			oneOpenCard = !oneOpenCard;
-			if (oneOpenCard) {
+			firstOpenCard.open = !firstOpenCard.open;
+			if (firstOpenCard.open) {
 				firstOpenCard.card = Number(cardItem.dataset.card);
 				firstOpenCard.index = Number(cardItem.dataset.index);
 			} else {
@@ -118,17 +119,18 @@ function initNewGame() {
 					return;
 				} else {
 					if (firstOpenCard.card === Number(cardItem.dataset.card)) {
-						alert('Вы победили');
-
-						// вывод результата, остановка таймера
-					} else {
-						alert('Вы проиграли');
-						let resultTime = format(
-							new Date(Math.floor(new Date() - startGameTime)),
-							'mm.ss'
+						gameState.state = 'win';
+						renderModules({ state: gameState.state });
+						modulesEl.classList.remove('display-none');
+						console.log(
+							`Вы выиграли! Затраченное время: ${minutes}.${seconds}`
 						);
-						console.log(resultTime);
-						// вывод результата, остановка таймера
+					} else {
+						loss = true;
+						gameState.state = 'loss';
+						renderModules({ state: gameState.state });
+						modulesEl.classList.remove('display-none');
+						// console.log(`Вы проиграли! Затраченное время: ${minutes}.${seconds}`	);
 					}
 				}
 			}
