@@ -69,6 +69,7 @@ export function renderModules({ state, time }) {
 			initBtnStart();
 		});
 	}
+
 	initBtnStart();
 
 	//кнопка Старт/Играть снова

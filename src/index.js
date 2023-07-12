@@ -2,10 +2,6 @@ import './css/style.scss';
 import { renderApp } from './js/renderApp.js';
 import { renderModules, modulesEl } from './js/components/module-component.js';
 
-// СРИСОК ПРОБЛЕМ:
-// таймер не останавливается после окончания игры
-// при правильном дубле - окончание игры
-
 export let gameState = {
 	difficultyLevel: 0,
 	state: 'start',
@@ -30,8 +26,6 @@ export const setDifficultyLevel = (difLv) =>
 export const newGame = () => {
 	cardDeck.length = 0;
 	gameState.openCard = 0;
-	// gameState.timeGame.sec = 0;
-	// gameState.timeGame.min = 0;
 
 	//создаем колоду дублей и перемешиваем
 	for (let i = 0; i < gameState.difficultyLevel; i = i + 2) {
@@ -73,8 +67,11 @@ function initNewGame() {
 		let seconds = 1;
 		let minutes = 0;
 
-		const timerId = setInterval(timerFunction, 1000);
-		function timerFunction() {
+		const intervalId = setInterval(() => {
+			if (gameState.state === 'win' || gameState.state === 'loss') {
+				clearInterval(intervalId);
+				return;
+			}
 			minutes = Number(minutes);
 			if (seconds === 60) {
 				seconds = 0;
@@ -89,12 +86,7 @@ function initNewGame() {
 			gameState.timeGame = `${minutes}.${seconds}`;
 			document.querySelector('.volume').innerHTML = gameState.timeGame;
 			seconds++;
-		}
-
-		// не получается остановить таймер
-		if (gameState.state === 'win' || gameState.state === 'loss') {
-			clearInterval(timerId);
-		}
+		}, 1000);
 	}
 
 	//поворот карты по клику
