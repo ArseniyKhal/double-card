@@ -4,7 +4,7 @@ import { cardDeck } from '../index.js';
 // здесь рендер игрового поля
 const appEl = document.getElementById('app');
 
-export const renderApp = ({ time }) => {
+export const renderApp = () => {
 	const cardHtml = cardDeck
 		.map((card, index) => {
 			//вычисляем масть
