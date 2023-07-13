@@ -1,8 +1,8 @@
 // import shirtСard from '../img/card.svg';
-import { cardDeck } from '../index.js';
+import { cardDeck } from '../index';
 
 // здесь рендер игрового поля
-const appEl = document.getElementById('app');
+const appEl = <HTMLElement>document.getElementById('app');
 
 export const renderApp = () => {
 	const cardHtml = cardDeck
