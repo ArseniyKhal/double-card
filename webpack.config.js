@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
-	entry: path.resolve(__dirname, './src/index.js'),
+	entry: path.resolve(__dirname, './src/index.ts'),
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
@@ -13,9 +13,13 @@ module.exports = {
 		assetModuleFilename: '[name][ext]',
 	},
 	mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-	// mode: 'production',
 	module: {
 		rules: [
+			{
+				test: /\.ts$/,
+				use: 'ts-loader',
+				exclude: /node_modules/,
+			},
 			{
 				test: /\.scss$/i,
 				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
@@ -29,6 +33,9 @@ module.exports = {
 				type: 'asset/resource',
 			},
 		],
+	},
+	resolve: {
+		extensions: ['.ts', '.js'],
 	},
 	optimization: {
 		minimizer: ['...', new CssMinimizerPlugin()],

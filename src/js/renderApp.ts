@@ -1,8 +1,8 @@
 // import shirtСard from '../img/card.svg';
-import { cardDeck } from '../index.js';
+import { cardDeck } from '../index';
 
 // здесь рендер игрового поля
-const appEl = document.getElementById('app');
+const appEl = <HTMLElement>document.getElementById('app');
 
 export const renderApp = () => {
 	const cardHtml = cardDeck
@@ -50,7 +50,7 @@ export const renderApp = () => {
 			<div class="card-field__card card" data-index="${index}" data-card="${card}">
 				<div class="card__back back rotate-back" data-index="${index}">
 					<div class="back__body card__body">
-						<img src="../img/card.svg" alt="card">
+						<img src="./static/card.svg" alt="card">
 					</div>
 				</div>
 
@@ -60,14 +60,14 @@ export const renderApp = () => {
 							<h2 class="front__title" ${
 								redCard ? 'style="color: #ff4545"' : ''
 							}>${rankCart}</h2>
-							<img src="../img/${suit}.svg" alt="card">
+							<img src="./static/${suit}.svg" alt="card">
 						</div>
-						<img class="front__picture" src="../img/${suit}.svg" alt="card">
+						<img class="front__picture" src="./static/${suit}.svg" alt="card">
 						<div class="front__face flipped-over">
 							<h2 class="front__title" ${
 								redCard ? 'style="color: #ff4545"' : ''
 							}>${rankCart}</h2>
-							<img src="../img/${suit}.svg" alt="card">
+							<img src="./static/${suit}.svg" alt="card">
 						</div>
 					</div>
 				</div>
@@ -84,7 +84,7 @@ export const renderApp = () => {
 								<div class="timer__min">min</div>
 								<div class="timer__sek">sek</div>
 							</div>
-							<div class="timer__volume">00.00</div>
+							<div class="timer__volume volume">00.00</div>
 						</div>
 						<button class="header__button button" id="newGame">Начать заново</button>
 					</div>
