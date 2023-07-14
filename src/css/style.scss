@@ -61,12 +61,12 @@ html {
 }
 
 .rotate {
-	transform: rotateY(90deg);
+	transform: rotateY(180deg);
 	opacity: 0;
 }
 
 .rotate-back {
-	transform: rotateY(-90deg);
+	transform: rotateY(-180deg);
 	opacity: 0;
 }
 

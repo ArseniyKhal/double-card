@@ -64,14 +64,16 @@ export function renderModules({
 	const buttonsDifficultyLevel = document.querySelectorAll(
 		'.difficulty-level__element'
 	);
-	for (const buttonDifLevel of buttonsDifficultyLevel as any) {
+	for (const buttonDifLevel of buttonsDifficultyLevel) {
 		//кнопка выбора сложности игры
 		buttonDifLevel.addEventListener('click', () => {
-			for (const btnDifLv of buttonsDifficultyLevel as any) {
+			for (const btnDifLv of buttonsDifficultyLevel) {
 				btnDifLv.classList.remove('select-border');
 			}
 			buttonDifLevel.classList.add('select-border');
-			setDifficultyLevel(Number(buttonDifLevel.dataset.level));
+			if (buttonDifLevel instanceof HTMLElement) {
+				setDifficultyLevel(Number(buttonDifLevel.dataset.level));
+			}
 			initBtnStart();
 		});
 	}
@@ -81,7 +83,7 @@ export function renderModules({
 	//кнопка Старт/Играть снова
 	function initBtnStart() {
 		btnStartEl.addEventListener('click', () => {
-			for (const btnDifLv of buttonsDifficultyLevel as any) {
+			for (const btnDifLv of buttonsDifficultyLevel) {
 				btnDifLv.classList.remove('select-border');
 			}
 			if (gameState.state === 'start') {
