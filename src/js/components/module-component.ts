@@ -77,7 +77,7 @@ export function renderModules({
 		initBtnStart();
 	}
 
-	//кнопка Старт/Начать заново
+	//кнопка Старт/Играть снова
 	function initBtnStart() {
 		btnStartEl.addEventListener('click', () => {
 			for (const btnDifLv of buttonsDifficultyLevel) {

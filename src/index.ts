@@ -13,6 +13,7 @@ type Employee = {
 	openCard: number;
 };
 
+let intervalId: ReturnType<typeof setInterval>;
 export let cardDeck: number[] = [];
 
 renderModules({ state: 'start', time: gameState.timeGame });
@@ -37,13 +38,14 @@ export const newGame = ({ difLv }: { difLv: number }) => {
 	initNewGame();
 };
 
-module.exports = { newGame };
+// module.exports = { newGame };
 
 //новая игра
 function initNewGame() {
 	// кнопка Начать заново
 	const buttonNewGame = <HTMLElement>document.getElementById('newGame');
 	buttonNewGame.addEventListener('click', () => {
+		clearInterval(intervalId);
 		modulesEl.classList.remove('display-none');
 	});
 
@@ -61,14 +63,15 @@ function initNewGame() {
 		}
 		initTurnCard();
 		TaimerGo();
-	}, 5000);
+	}, 2000);
 
 	// таймер игры
 	function TaimerGo() {
+		clearInterval(intervalId);
 		let seconds: number | string = 1;
 		let minutes: number | string = 0;
 
-		const intervalId = setInterval(() => {
+		intervalId = setInterval(() => {
 			if (gameState.state === 'win' || gameState.state === 'loss') {
 				clearInterval(intervalId);
 				return;
