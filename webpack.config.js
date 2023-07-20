@@ -10,7 +10,6 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
 		clean: true,
-		assetModuleFilename: '[name][ext]',
 	},
 	mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 	module: {
@@ -21,16 +20,28 @@ module.exports = {
 				exclude: /node_modules/,
 			},
 			{
-				test: /\.scss$/i,
-				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+				test: /\.(scss|css)$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+					'postcss-loader',
+					'sass-loader',
+				],
 			},
 			{
 				test: /\.(png|svg|jpg|jpeg|gif)$/i,
 				type: 'asset/resource',
 			},
 			{
-				test: /\.(woff|woff2|eot|ttf|otf)$/i,
+				test: /\.(woff|woff2&?|eot|ttf|otf)$/i,
 				type: 'asset/resource',
+			},
+			{
+				test: /\.svg$/i,
+				type: 'asset/resource',
+				generator: {
+					filename: path.join('icons', '[name].[contenthash][ext]'),
+				},
 			},
 		],
 	},
@@ -47,6 +58,8 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './src/index.html',
 		}),
-		new MiniCssExtractPlugin(),
+		new MiniCssExtractPlugin({
+			filename: '[name].[contenthash].css',
+		}),
 	],
 };

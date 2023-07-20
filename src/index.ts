@@ -3,39 +3,32 @@ import { renderApp } from './js/renderApp';
 import { renderModules, modulesEl } from './js/components/module-component';
 
 export let gameState: Employee = {
-	difficultyLevel: 0,
 	state: 'start',
 	timeGame: '00.00',
 	openCard: 0,
 };
 type Employee = {
-	difficultyLevel: number;
 	state: string;
 	timeGame: string;
 	openCard: number;
 };
 
+let intervalId: ReturnType<typeof setInterval>;
 export let cardDeck: number[] = [];
 
-if (gameState.difficultyLevel === 0) {
-	renderModules({ state: gameState.state, time: gameState.timeGame });
-} else {
-	renderApp();
-}
+renderModules({ state: 'start', time: gameState.timeGame });
 
-export const setModuleToStart = () => (gameState.state = 'start');
-
-// установка сложности игры
-export const setDifficultyLevel = (difLv: number) =>
-	(gameState.difficultyLevel = difLv);
+export const setModuleToStart = () => {
+	gameState.state = 'start';
+};
 
 //начинаем новую игру
-export const newGame = () => {
+export const newGame = ({ difLv }: { difLv: number }) => {
 	cardDeck.length = 0;
 	gameState.openCard = 0;
 
-	//создаем колоду дублей и перемешиваем
-	for (let i = 0; i < gameState.difficultyLevel; i = i + 2) {
+	//создаем массив дублей и перемешиваем
+	for (let i = 0; i < difLv; i = i + 2) {
 		cardDeck[i] = Math.floor(Math.random() * 35);
 		cardDeck[i + 1] = cardDeck[i];
 	}
@@ -50,6 +43,7 @@ function initNewGame() {
 	// кнопка Начать заново
 	const buttonNewGame = <HTMLElement>document.getElementById('newGame');
 	buttonNewGame.addEventListener('click', () => {
+		clearInterval(intervalId);
 		modulesEl.classList.remove('display-none');
 	});
 
@@ -71,10 +65,11 @@ function initNewGame() {
 
 	// таймер игры
 	function TaimerGo() {
+		clearInterval(intervalId);
 		let seconds: number | string = 1;
 		let minutes: number | string = 0;
 
-		const intervalId = setInterval(() => {
+		intervalId = setInterval(() => {
 			if (gameState.state === 'win' || gameState.state === 'loss') {
 				clearInterval(intervalId);
 				return;

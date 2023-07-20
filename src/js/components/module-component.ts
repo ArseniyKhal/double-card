@@ -1,12 +1,8 @@
-import {
-	gameState,
-	newGame,
-	setDifficultyLevel,
-	setModuleToStart,
-} from '../../index';
+import { gameState, newGame, setModuleToStart } from '../../index';
 
 // здесь рендер всплывающего окна (выбор сложности/результат игры)
 export const modulesEl = <HTMLElement>document.getElementById('modules');
+let difLv: number = 0;
 
 export function renderModules({
 	state,
@@ -72,13 +68,14 @@ export function renderModules({
 			}
 			buttonDifLevel.classList.add('select-border');
 			if (buttonDifLevel instanceof HTMLElement) {
-				setDifficultyLevel(Number(buttonDifLevel.dataset.level));
+				difLv = Number(buttonDifLevel.dataset.level);
 			}
 			initBtnStart();
 		});
 	}
-
-	initBtnStart();
+	if (difLv > 0 && difLv <= 18) {
+		initBtnStart();
+	}
 
 	//кнопка Старт/Играть снова
 	function initBtnStart() {
@@ -88,7 +85,7 @@ export function renderModules({
 			}
 			if (gameState.state === 'start') {
 				modulesEl.classList.add('display-none');
-				newGame();
+				newGame({ difLv });
 			} else {
 				setModuleToStart();
 				renderModules({ state: gameState.state, time });
