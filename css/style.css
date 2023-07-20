@@ -5,8 +5,8 @@
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
@@ -98,7 +98,7 @@ html {
   font-weight: 400;
   font-size: 16px;
   color: #fff;
-  background-color: #004980;
+  background-color: #7ac100;
 }
 
 .app {
@@ -181,7 +181,7 @@ html {
   display: flex;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
-          justify-content: end;
+          justify-content: flex-end;
   font-size: 16px;
   gap: 57px;
   padding-right: 5px;

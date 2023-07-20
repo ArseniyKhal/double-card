@@ -38,8 +38,6 @@ export const newGame = ({ difLv }: { difLv: number }) => {
 	initNewGame();
 };
 
-// module.exports = { newGame };
-
 //новая игра
 function initNewGame() {
 	// кнопка Начать заново
@@ -63,7 +61,7 @@ function initNewGame() {
 		}
 		initTurnCard();
 		TaimerGo();
-	}, 2000);
+	}, 5000);
 
 	// таймер игры
 	function TaimerGo() {
