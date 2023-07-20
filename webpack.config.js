@@ -10,7 +10,6 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
 		clean: true,
-		// assetModuleFilename: path.join('images', '[name].[contenthash][ext]'),
 	},
 	mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 	module: {
