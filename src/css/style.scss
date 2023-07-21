@@ -1,9 +1,9 @@
-@import "null";
+@import url('null');
 
 @font-face {
-	font-family: "StratosSkyeng";
-	src: url("../fonts/stratosskyengweb-regular.woff2") format("woff2"),
-		url("../fonts/stratosskyengweb-regular.woff") format("woff");
+	font-family: StratosSkyeng;
+	src: url('../fonts/stratosskyengweb-regular.woff2') format('woff2'),
+		url('../fonts/stratosskyengweb-regular.woff') format('woff');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
@@ -17,13 +17,14 @@ $TextColor2: #004980;
 $TextColor3: #0080c1;
 
 html {
-	font-family: "StratosSkyeng", sans-serif;
+	font-family: StratosSkyeng, sans-serif;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 16px;
 	color: $TextColor1;
 	background-color: $BG1Color;
 }
+
 .app {
 	position: relative;
 }
@@ -44,9 +45,11 @@ html {
 	line-height: 32px;
 	position: relative;
 	transition: transform 0.2s ease;
+
 	&:hover {
 		transform: scale(1.05);
 	}
+
 	&:active {
 		transform: translateY(1px);
 	}
@@ -83,16 +86,19 @@ html {
 .timer {
 	height: 91px;
 	min-width: 155px;
+
 	&__text {
 		display: flex;
 		justify-content: flex-end;
 		font-size: 16px;
 		gap: 57px;
 		padding-right: 5px;
+
 		& > * {
 			text-align: right;
 		}
 	}
+
 	&__volume {
 		font-size: 64px;
 	}
@@ -104,13 +110,14 @@ html {
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background-color: rgb(0, 73, 128, 0.8999999761581421);
+	background-color: rgb(0 73 128 / 90%);
 
 	&__container {
 		margin: 158px auto;
 		max-width: 500px;
 		padding: 0 10px;
 	}
+
 	&__body {
 		background-color: $BG2Color;
 		text-align: center;
@@ -132,12 +139,14 @@ html {
 		margin-top: 20px;
 		margin-bottom: 48px;
 	}
+
 	&__row {
 		display: flex;
 		font-size: 64px;
 		gap: 24px;
 		justify-content: center;
 	}
+
 	&__element {
 		background-color: #fff;
 		color: $TextColor3;
@@ -149,9 +158,11 @@ html {
 		align-items: center;
 		cursor: pointer;
 		transition: transform 0.2s ease;
+
 		&:hover {
 			transform: scale(1.05);
 		}
+
 		&:active {
 			transform: translateY(1px);
 		}
@@ -160,15 +171,18 @@ html {
 
 .result {
 	color: #000;
+
 	&__picture {
 		margin-bottom: 8px;
 	}
+
 	&__title {
 		font-size: 40px;
 		color: $TextColor2;
 		line-height: 1.2;
 		margin-bottom: 28px;
 	}
+
 	&__text {
 		margin-bottom: 10px;
 		font-size: 24px;
@@ -189,9 +203,11 @@ html {
 	height: 133px;
 	margin: 0 auto;
 	cursor: pointer;
+
 	&__body {
 		border-radius: 4px;
 	}
+
 	&__front,
 	&__back {
 		position: absolute;
@@ -204,26 +220,26 @@ html {
 		padding: 6px;
 		transition: all 0.3s ease;
 	}
-	&__front {
-	}
-	&__back {
-	}
 }
+
 .back__body {
 	background-color: #c2f5ff;
 }
+
 .front {
 	&__body {
 		height: 100%;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+
 		& img {
 			width: 29px;
 			height: 25px;
 			align-self: center;
 		}
 	}
+
 	&__face {
 		& img {
 			margin-left: 3px;
@@ -231,6 +247,7 @@ html {
 			height: 6px;
 		}
 	}
+
 	&__title {
 		color: #000;
 		font-size: 24px;
