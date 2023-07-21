@@ -10,6 +10,7 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
 		clean: true,
+		assetModuleFilename: path.join('images', '[name].[contenthash][ext]'),
 	},
 	mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 	module: {
@@ -20,11 +21,13 @@ module.exports = {
 				exclude: /node_modules/,
 			},
 			{
-				test: /\.(scss|css)$/,
+				test: /\.(sass|css|scss)$/,
 				use: [
 					MiniCssExtractPlugin.loader,
-					'css-loader',
-					'postcss-loader',
+					{
+						loader: 'css-loader',
+						options: { url: false },
+					},
 					'sass-loader',
 				],
 			},
@@ -33,7 +36,7 @@ module.exports = {
 				type: 'asset/resource',
 			},
 			{
-				test: /\.(woff|woff2&?|eot|ttf|otf)$/i,
+				test: /\.(woff|woff2|eot|ttf|otf)$/i,
 				type: 'asset/resource',
 			},
 			{
@@ -59,7 +62,11 @@ module.exports = {
 			template: './src/index.html',
 		}),
 		new MiniCssExtractPlugin({
-			filename: '[name].[contenthash].css',
+			filename: './[name].[contenthash].css',
 		}),
 	],
+	devServer: {
+		watchFiles: path.join(__dirname, 'src'),
+		port: 9000,
+	},
 };
