@@ -1,56 +1,60 @@
-// import shirtСard from '../img/card.svg';
-import { cardDeck } from '../index';
+import shirtСard from "../image/card.svg";
+import clubs from "../image/clubs.png";
+import diamonds from "../image/diamonds.png";
+import hearts from "../image/hearts.png";
+import spades from "../image/spades.png";
+import { cardDeck } from "../index";
 
 // здесь рендер игрового поля
-const appEl = <HTMLElement>document.getElementById('app');
+const appEl = <HTMLElement>document.getElementById("app");
 
 export const renderApp = () => {
 	const cardHtml = cardDeck
 		.map((card, index) => {
 			//вычисляем масть
-			let suit = '';
+			let suit = "";
 			if (card >= 0 && card < 9) {
-				suit = 'spades';
+				suit = spades;
 			} else if (card >= 9 && card < 18) {
-				suit = 'clubs';
+				suit = clubs;
 			} else if (card >= 18 && card < 27) {
-				suit = 'hearts';
+				suit = hearts;
 			} else {
-				suit = 'diamonds';
+				suit = diamonds;
 			}
 			//вычисляем цвет
 			let redCard = false;
-			if (suit === 'hearts' || suit === 'diamonds') {
+			if (suit === hearts || suit === diamonds) {
 				redCard = true;
 			}
 
 			//вычисляем ранг карты
-			let rankCart = '';
+			let rankCart = "";
 			if (card === 0 || card === 9 || card === 18 || card === 27) {
-				rankCart = 'A';
+				rankCart = "A";
 			} else if (card === 1 || card === 10 || card === 19 || card === 28) {
-				rankCart = 'K';
+				rankCart = "K";
 			} else if (card === 2 || card === 11 || card === 20 || card === 29) {
-				rankCart = 'Q';
+				rankCart = "Q";
 			} else if (card === 3 || card === 12 || card === 21 || card === 30) {
-				rankCart = 'J';
+				rankCart = "J";
 			} else if (card === 4 || card === 13 || card === 22 || card === 31) {
-				rankCart = '10';
+				rankCart = "10";
 			} else if (card === 5 || card === 14 || card === 23 || card === 32) {
-				rankCart = '9';
+				rankCart = "9";
 			} else if (card === 6 || card === 15 || card === 24 || card === 33) {
-				rankCart = '8';
+				rankCart = "8";
 			} else if (card === 7 || card === 16 || card === 25 || card === 34) {
-				rankCart = '7';
+				rankCart = "7";
 			} else {
-				rankCart = '6';
+				rankCart = "6";
 			}
 
 			return `
 			<div class="card-field__card card" data-index="${index}" data-card="${card}">
 				<div class="card__back back rotate-back" data-index="${index}">
 					<div class="back__body card__body">
-						<img src="./static/card.svg" alt="card">
+						<img src="${shirtСard}" alt="card">
 					</div>
 				</div>
 
@@ -58,23 +62,23 @@ export const renderApp = () => {
 					<div class="front__body card__body">
 						<div class="front__face">
 							<h2 class="front__title" ${
-								redCard ? 'style="color: #ff4545"' : ''
+								redCard ? 'style="color: #ff4545"' : ""
 							}>${rankCart}</h2>
-							<img src="./static/${suit}.svg" alt="card">
+							<img src="${suit}" alt="card">
 						</div>
-						<img class="front__picture" src="./static/${suit}.svg" alt="card">
+						<img class="front__picture" src="${suit}" alt="card">
 						<div class="front__face flipped-over">
 							<h2 class="front__title" ${
-								redCard ? 'style="color: #ff4545"' : ''
+								redCard ? 'style="color: #ff4545"' : ""
 							}>${rankCart}</h2>
-							<img src="./static/${suit}.svg" alt="card">
+							<img src="${suit}" alt="card">
 						</div>
 					</div>
 				</div>
 				
 		</div>`;
 		})
-		.join('');
+		.join("");
 
 	const appHtml = `<header class="header">
 				<div class="container">

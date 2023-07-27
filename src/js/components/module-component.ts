@@ -1,7 +1,9 @@
-import { gameState, newGame, setModuleToStart } from '../../index';
+import { gameState, newGame, setModuleToStart } from "../../index";
+import celebration from "../../image/celebration.png";
+import daed from "../../image/daed.png";
 
 // здесь рендер всплывающего окна (выбор сложности/результат игры)
-export const modulesEl = <HTMLElement>document.getElementById('modules');
+export const modulesEl = <HTMLElement>document.getElementById("modules");
 let difLv: number = 0;
 
 export function renderModules({
@@ -12,14 +14,14 @@ export function renderModules({
 	time: string;
 }) {
 	let modulContent = ``;
-	if (state === 'win' || state === 'loss') {
+	if (state === "win" || state === "loss") {
 		modulContent = `
 		<div class="result">
-			<img class="result__picture" src="./static/${
-				state === 'win' ? 'celebration' : 'daed'
-			}.svg" alt="pic">
+			<img class="result__picture" src="${
+				state === "win" ? celebration : daed
+			}" alt="pic">
 			<h2 class="result__title">${
-				state === 'win' ? 'Вы выиграли!' : 'Вы проиграли!'
+				state === "win" ? "Вы выиграли!" : "Вы проиграли!"
 			}</h2>
 			<p class="result__text">Затраченное время:</p>
 			<div class="result__timer timer__volume volume">
@@ -46,7 +48,7 @@ export function renderModules({
 					</div>
 					<div class="modul__button">
 						<button class="difficulty-level__button button" id="btnStart">${
-							state === 'start' ? 'Старт' : 'Играть снова'
+							state === "start" ? "Старт" : "Играть снова"
 						}</button>
 					</div>
 				</div>
@@ -56,17 +58,17 @@ export function renderModules({
 	modulesEl.innerHTML = sectionModulHtml;
 
 	// выбор сложности игры
-	const btnStartEl = <HTMLElement>document.getElementById('btnStart');
+	const btnStartEl = <HTMLElement>document.getElementById("btnStart");
 	const buttonsDifficultyLevel = document.querySelectorAll(
-		'.difficulty-level__element'
+		".difficulty-level__element"
 	);
 	for (const buttonDifLevel of buttonsDifficultyLevel) {
 		//кнопка выбора сложности игры
-		buttonDifLevel.addEventListener('click', () => {
+		buttonDifLevel.addEventListener("click", () => {
 			for (const btnDifLv of buttonsDifficultyLevel) {
-				btnDifLv.classList.remove('select-border');
+				btnDifLv.classList.remove("select-border");
 			}
-			buttonDifLevel.classList.add('select-border');
+			buttonDifLevel.classList.add("select-border");
 			if (buttonDifLevel instanceof HTMLElement) {
 				difLv = Number(buttonDifLevel.dataset.level);
 			}
@@ -79,12 +81,12 @@ export function renderModules({
 
 	//кнопка Старт/Играть снова
 	function initBtnStart() {
-		btnStartEl.addEventListener('click', () => {
+		btnStartEl.addEventListener("click", () => {
 			for (const btnDifLv of buttonsDifficultyLevel) {
-				btnDifLv.classList.remove('select-border');
+				btnDifLv.classList.remove("select-border");
 			}
-			if (gameState.state === 'start') {
-				modulesEl.classList.add('display-none');
+			if (gameState.state === "start") {
+				modulesEl.classList.add("display-none");
 				newGame({ difLv });
 			} else {
 				setModuleToStart();

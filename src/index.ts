@@ -1,10 +1,11 @@
-import './css/style.scss';
-import { renderApp } from './js/renderApp';
-import { renderModules, modulesEl } from './js/components/module-component';
+"use stric";
+import "./css/style.scss";
+import { renderApp } from "./js/renderApp";
+import { renderModules, modulesEl } from "./js/components/module-component";
 
 export let gameState: Employee = {
-	state: 'start',
-	timeGame: '00.00',
+	state: "start",
+	timeGame: "00.00",
 	openCard: 0,
 };
 type Employee = {
@@ -16,10 +17,10 @@ type Employee = {
 let intervalId: ReturnType<typeof setInterval>;
 export let cardDeck: number[] = [];
 
-renderModules({ state: 'start', time: gameState.timeGame });
+renderModules({ state: "start", time: gameState.timeGame });
 
 export const setModuleToStart = () => {
-	gameState.state = 'start';
+	gameState.state = "start";
 };
 
 //начинаем новую игру
@@ -41,23 +42,23 @@ export const newGame = ({ difLv }: { difLv: number }) => {
 //новая игра
 function initNewGame() {
 	// кнопка Начать заново
-	const buttonNewGame = <HTMLElement>document.getElementById('newGame');
-	buttonNewGame.addEventListener('click', () => {
+	const buttonNewGame = <HTMLElement>document.getElementById("newGame");
+	buttonNewGame.addEventListener("click", () => {
 		clearInterval(intervalId);
-		modulesEl.classList.remove('display-none');
+		modulesEl.classList.remove("display-none");
 	});
 
-	const cardItems = document.querySelectorAll('.card');
-	const cardBacks = document.querySelectorAll('.back');
-	const cardFronts = document.querySelectorAll('.front');
+	const cardItems = document.querySelectorAll(".card");
+	const cardBacks = document.querySelectorAll(".back");
+	const cardFronts = document.querySelectorAll(".front");
 
 	//разворот карт через 5 сек
 	setTimeout(() => {
 		for (const cardBack of cardBacks) {
-			cardBack.classList.toggle('rotate-back');
+			cardBack.classList.toggle("rotate-back");
 		}
 		for (const cardFront of cardFronts) {
-			cardFront.classList.toggle('rotate');
+			cardFront.classList.toggle("rotate");
 		}
 		initTurnCard();
 		TaimerGo();
@@ -70,7 +71,7 @@ function initNewGame() {
 		let minutes: number | string = 0;
 
 		intervalId = setInterval(() => {
-			if (gameState.state === 'win' || gameState.state === 'loss') {
+			if (gameState.state === "win" || gameState.state === "loss") {
 				clearInterval(intervalId);
 				return;
 			}
@@ -80,13 +81,13 @@ function initNewGame() {
 				minutes++;
 			}
 			if (+seconds < 10) {
-				seconds = '0' + seconds;
+				seconds = "0" + seconds;
 			}
 			if (minutes < 10) {
-				minutes = '0' + minutes;
+				minutes = "0" + minutes;
 			}
 			gameState.timeGame = `${minutes}.${seconds}`;
-			const volTime = <HTMLElement>document.querySelector('.volume');
+			const volTime = <HTMLElement>document.querySelector(".volume");
 			volTime.innerHTML = gameState.timeGame;
 			seconds = Number(seconds);
 			seconds++;
@@ -101,7 +102,7 @@ function initNewGame() {
 			index: 0,
 		};
 		for (const cardItem of cardItems) {
-			cardItem.addEventListener('click', () => {
+			cardItem.addEventListener("click", () => {
 				firstOpenCard.open = !firstOpenCard.open;
 				if (cardItem instanceof HTMLElement) {
 					if (firstOpenCard.open) {
@@ -109,28 +110,28 @@ function initNewGame() {
 						firstOpenCard.index = Number(cardItem.dataset.index);
 					} else {
 						if (firstOpenCard.index === Number(cardItem.dataset.index)) {
-							alert('Только не по этой же карте!');
+							alert("Только не по этой же карте!");
 							return;
 						} else {
 							if (firstOpenCard.card === Number(cardItem.dataset.card)) {
 								gameState.openCard = gameState.openCard + 2;
 								if (gameState.openCard === cardDeck.length) {
 									// победа
-									gameState.state = 'win';
+									gameState.state = "win";
 									renderModules({
 										state: gameState.state,
 										time: gameState.timeGame,
 									});
-									modulesEl.classList.remove('display-none');
+									modulesEl.classList.remove("display-none");
 								}
 							} else {
 								// проигрыш
-								gameState.state = 'loss';
+								gameState.state = "loss";
 								renderModules({
 									state: gameState.state,
 									time: gameState.timeGame,
 								});
-								modulesEl.classList.remove('display-none');
+								modulesEl.classList.remove("display-none");
 							}
 						}
 					}
@@ -140,14 +141,14 @@ function initNewGame() {
 					for (const cardBack of cardBacks) {
 						if (cardBack instanceof HTMLElement) {
 							if (cardBack.dataset.index === index) {
-								cardBack.classList.toggle('rotate-back');
+								cardBack.classList.toggle("rotate-back");
 							}
 						}
 					}
 					for (const cardFront of cardFronts) {
 						if (cardFront instanceof HTMLElement) {
 							if (cardFront.dataset.index === index) {
-								cardFront.classList.toggle('rotate');
+								cardFront.classList.toggle("rotate");
 							}
 						}
 					}

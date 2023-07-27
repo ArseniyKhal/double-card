@@ -1,5 +1,5 @@
-@import url("_null.scss");
-@import url("_fonts.scss");
+@import "null";
+@import "fonts";
 
 $BTNColor: #7ac100;
 $BG1Color: #004980;
@@ -226,7 +226,7 @@ html {
 		justify-content: space-between;
 
 		& img {
-			width: 29px;
+			max-width: 29px;
 			height: 25px;
 			align-self: center;
 		}
@@ -244,4 +244,8 @@ html {
 		color: #000;
 		font-size: 24px;
 	}
+}
+
+.flipped-over {
+	transform: rotate(180deg);
 }
